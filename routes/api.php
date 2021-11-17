@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/fb', [\App\Http\Controllers\FBController::class,'add'])->middleware(\App\Http\Middleware\EnsureTokenIsValid::class);
+Route::post('/delete', [\App\Http\Controllers\FBController::class,'delete'])->middleware(\App\Http\Middleware\EnsureTokenIsValid::class);
+Route::post('/test', [\App\Http\Controllers\FBController::class,'delete'])->middleware(\App\Http\Middleware\EnsureTokenIsValid::class);

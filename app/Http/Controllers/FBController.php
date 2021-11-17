@@ -24,4 +24,20 @@ class FBController extends Controller
         FBUserInfo::create($validate->validated());
 
     }
+
+    public function delete (Request $request)
+    {
+        $validate = Validator::make($request->all(),[
+            'profile_id' => 'required',
+        ]);
+
+        if($validate->fails()) {
+            return response()->json(['status' => $validate->errors()],422);
+        }
+//        return $validate->validated();
+
+        FBUserInfo::findOrFail($request->profile_id)->delete();
+
+        return response()->json(['status' => 'deleted'],200);
+    }
 }
